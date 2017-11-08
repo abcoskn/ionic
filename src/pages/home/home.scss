@@ -1,0 +1,36 @@
+page-home {
+    .slides{
+        height:auto!important;
+    }
+    h4{font-size:12px;}
+    h5{font-size:10px;}
+    h6{
+        text-align: center;
+    }
+    .productslide .col{text-align:left;}
+    .productslide h4, .productslide h5{
+        margin:0px;
+        padding:0px;
+    }
+    ion-card {
+        position: relative;
+        text-align: center;
+    }
+    
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+      }
+    
+      .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 60%;
+        width: 100%;
+        color: #fff;
+      }
+}
