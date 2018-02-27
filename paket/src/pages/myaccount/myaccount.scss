@@ -1,0 +1,19 @@
+page-myaccount {
+    .content{
+        background-color: #f4e8dd;
+    }
+    h2 {
+        width: 100%; 
+        text-align: center; 
+        border-bottom: 1px solid #60472e; 
+        line-height: 0.1em;
+        margin: 30px 0 20px; 
+     } 
+     
+     h2 span { 
+         background:#f4e8dd; 
+         padding:0 10px; 
+         font-size:14px;
+         color:#60472e;
+     }
+}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { FunctionsProvider } from '../../providers/functions/functions';
 /**
  * Generated class for the MyaccountPage page.
  *
@@ -14,12 +14,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'myaccount.html',
 })
 export class MyaccountPage {
+email:any;
+password:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public functions:FunctionsProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyaccountPage');
+  login(){
+    this.functions.presentLoading("Giriş Yapılıyor..");
+    this.functions.login(this.email,this.password).subscribe(response => {
+      console.log(response);
+      if(response.indexOf("Merhaba")> -1)
+      {
+        this.functions.loading.dismiss();
+        this.functions.showAlert("Giriş Başarılı!","Başarıyla giriş yaptınız.","Tamam");
+      }
+      else{
+        this.functions.loading.dismiss();
+        this.functions.presentToast("Kullanıcı adı veya şifre yanlış!");
+      }
+    });
   }
-
 }
