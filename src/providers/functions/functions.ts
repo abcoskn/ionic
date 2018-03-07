@@ -15,8 +15,10 @@ export class FunctionsProvider {
 
   loading:any;
   
-  private baseUrl: string = "http://abctasarim.net/";
+  private baseUrl: string = "http://188.119.14.66:8888/webapi/";
   private loginurl:string;
+  private getstoresurl:string;
+
 
   constructor(
     public http: Http,
@@ -30,6 +32,9 @@ export class FunctionsProvider {
   public login(username,password){
     var body='emailAddress='+username+'&password='+password;
     return this.runRequest2(this.loginurl, body);
+  }
+  public getstores(){
+    return this.runRequest(this.getstoresurl, "");
   }
 
   private runRequest(url: string, body: string) {
@@ -55,7 +60,9 @@ export class FunctionsProvider {
   }
   
   private initURL(_baseURL: string) {
-    this.loginurl = "https://m.trendyol.com";
+    this.loginurl = _baseURL +"sdf.php";
+    this.getstoresurl = _baseURL +"stores.php";
+
   }
 
   presentToast(toastmessage) {

@@ -19,5 +19,4 @@ export class ActbeautifulPage {
     const browser = this.iab.create('https://abspace.yves-rocher.com/tr/tr/',"toolbar=yes,location=no");
   }
 
-
 }

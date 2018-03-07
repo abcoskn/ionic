@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MyaccountPage } from '../pages/myaccount/myaccount';
 import { ActbeautifulPage } from '../pages/actbeautiful/actbeautiful';
+import { StoresMapPage } from '../pages/stores-map/stores-map';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,8 @@ export class MyApp {
       { title: 'Ana Sayfa', component: HomePage },
       { title: 'Kategoriler', component: ListPage },
       { title: 'Act Beautiful', component: ActbeautifulPage },
-      { title: 'Hesabım', component: MyaccountPage }
+      { title: 'Hesabım', component: MyaccountPage },
+      { title: 'Mağazalar', component: StoresMapPage }
     ];
 
   }

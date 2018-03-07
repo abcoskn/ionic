@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MyaccountPage } from '../pages/myaccount/myaccount';
 import { ActbeautifulPage } from '../pages/actbeautiful/actbeautiful';
+import { StoresMapPage } from '../pages/stores-map/stores-map';
+import { StoreInfoPage } from '../pages/store-info/store-info';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +22,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     HomePage,
     ListPage,
     MyaccountPage,
-    ActbeautifulPage
+    ActbeautifulPage,
+    StoresMapPage,
+    StoreInfoPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     HomePage,
     ListPage,
     MyaccountPage,
-    ActbeautifulPage
+    ActbeautifulPage,
+    StoresMapPage,
+    StoreInfoPage
   ],
   providers: [
     StatusBar,
