@@ -1,5 +1,5 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController,PopoverController  } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { StoreInfoPage } from '../store-info/store-info';
@@ -26,7 +26,7 @@ address:any;
 phone:any;
 items:any;
 profileModal:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public menu: MenuController,public functions:FunctionsProvider,public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public menu: MenuController,public functions:FunctionsProvider,public modalCtrl: ModalController,public popoverCtrl: PopoverController) {
     this.menu.swipeEnable(false);
   }
 
@@ -74,8 +74,10 @@ profileModal:any;
     this.name=name;
     this.phone=phone;
     this.address=address;
-    this.profileModal = this.modalCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{enableBackdropDismiss: false,cssClass : 'pricebreakup'});
-    this.profileModal.present();
+    //this.profileModal = this.modalCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
+    //this.profileModal.present();
+    let popover=this.popoverCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
+    popover.present()
   }
   closewindow(){
     document.getElementById("map").style.height="100%";

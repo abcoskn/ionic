@@ -18,11 +18,15 @@
 	padding-right:60px;
 	padding-top:5px;
 }
-.pricebreakup .modal-wrapper{
-	margin-left: 10%;
-	margin-top: 50%;
+
+
+.pricebreakup{
+	border-radius: 10px!important;
+	//box-shadow: 0 16px 20px rgba(0,0,0,.4);
+}
+.pricebreakup .popover-content{
+	overflow:hidden;
 	width:80%!important;
 	height:60px!important;
-	border-radius: 10px!important;
-	box-shadow: 0 16px 20px rgba(0,0,0,.4);
+	left:10%!important;
 }
