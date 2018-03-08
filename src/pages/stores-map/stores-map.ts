@@ -25,6 +25,7 @@ name:any;
 address:any;
 phone:any;
 items:any;
+profileModal:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public menu: MenuController,public functions:FunctionsProvider,public modalCtrl: ModalController) {
     this.menu.swipeEnable(false);
   }
@@ -58,9 +59,14 @@ items:any;
       map,
       icon:myIcon
     });
+    
+    let content = "<ion-list><button ion-item><ion-avatar item-start><img src='images/icon.png'></ion-avatar><h2>"+name+"</h2><p>2.4 kilometre</p></button></ion-list>";
+    let infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
     google.maps.event.addListener(marker, 'click', () => {
       this.setStoreInfo(name,phone,address);
-      //document.getElementById("map").style.height="50%";
+      //map, marker);
     });
     return marker;
   }
@@ -68,8 +74,8 @@ items:any;
     this.name=name;
     this.phone=phone;
     this.address=address;
-    let profileModal = this.modalCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{enableBackdropDismiss: false,cssClass : 'pricebreakup'});
-    profileModal.present();
+    this.profileModal = this.modalCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{enableBackdropDismiss: false,cssClass : 'pricebreakup'});
+    this.profileModal.present();
   }
   closewindow(){
     document.getElementById("map").style.height="100%";

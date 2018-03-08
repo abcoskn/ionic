@@ -1,6 +1,6 @@
 {
   "name": "YvesRocher",
-  "app_id": "",
+  "app_id": "e4d7bcb4",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

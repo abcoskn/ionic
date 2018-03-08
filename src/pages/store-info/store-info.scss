@@ -1,11 +1,14 @@
 page-store-info {
-
-    .show-page{
-        margin-left: 10%;
-        margin-top: 50%;
-        width:80%!important;
-        height:50%!important;
-        border-radius: 10px;
-        box-shadow: 0 16px 20px rgba(0,0,0,.4);
+    .left{
+        background-color:#8a9739;
+        width:20%;
+        height:100px;
+        text-align:center;
+        line-height:100px;
+        float:left;
+    }
+    .content,.ion-page,.scroll-content{
+        border-radius: 10px!important;
+        overflow:hidden;
     }
 }
