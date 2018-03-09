@@ -30,8 +30,6 @@ items:any;
 profileModal:any;
 mypoint:any;
 latlng:any;
-lat:any;
-lng:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -66,35 +64,33 @@ lng:any;
         map:this.map,
         icon:mypin
       });
-      this.lat = resp.coords.latitude;
-      this.lng = resp.coords.longitude;
+      this.latlng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
 
-      this.addYourLocationButton(this.map, this.mypoint,new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude));
+      this.addYourLocationButton(this.map, this.mypoint,this.latlng);
       this.map.setCenter(new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude));
       this.map.setZoom(16);
       let watch = this.geolocation.watchPosition();
       watch.subscribe((data) => {
-        this.lat = data.coords.latitude;
-        this.lng = data.coords.longitude;
-        this.mypoint.setPosition(new google.maps.LatLng(this.lat, this.lng));
+        this.latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
+        this.mypoint.setPosition(this.latlng);
         console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
       });
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-    this.functions.getstores(this.lat,this.lng).subscribe(response =>{
-      /*/if(response.success!="false"){
+
+    this.functions.getstores().subscribe(response =>{
+      if(response.success!="false"){
         this.items=response;
         
         this.items.forEach(element => {
-          this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map,element.distance);
+          this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map);
         });
 
-      }/*/
-      console.log(response);
+      }
     });
   }
-  addMarker(name,phone,address,lat,lng,map,distance){
+  addMarker(name,phone,address,lat,lng,map){
     var myIcon = new google.maps.MarkerImage("images/yrmarker.png", null, null, null, new google.maps.Size(27,60));
     let marker= new google.maps.Marker({
       position:{lat:lat,lng:lng},
@@ -103,18 +99,18 @@ lng:any;
       icon:myIcon
     });
     google.maps.event.addListener(marker, 'click', () => {
-      this.setStoreInfo(name,phone,address,distance);
+      this.setStoreInfo(name,phone,address);
       //map, marker);
     });
     return marker;
   }
-  setStoreInfo(name,phone,address,distance){
+  setStoreInfo(name,phone,address){
     this.name=name;
     this.phone=phone;
     this.address=address;
     //this.profileModal = this.modalCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
     //this.profileModal.present();
-    let popover=this.popoverCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address,distance:distance },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
+    let popover=this.popoverCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
     popover.present()
   }
   closewindow(){
