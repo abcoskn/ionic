@@ -83,14 +83,15 @@ lng:any;
       console.log('Error getting location', error);
     });
     this.functions.getstores(this.lat,this.lng).subscribe(response =>{
-      if(response.success!="false"){
+      /*/if(response.success!="false"){
         this.items=response;
         
         this.items.forEach(element => {
           this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map,element.distance);
         });
 
-      }
+      }/*/
+      console.log(response);
     });
   }
   addMarker(name,phone,address,lat,lng,map,distance){

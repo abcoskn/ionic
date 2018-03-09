@@ -35,7 +35,7 @@ export class FunctionsProvider {
   }
   public getstores(lat,lng){
     var body='latitude='+lat+'&longitude='+lng;
-    return this.runRequest(this.getstoresurl, body);
+    return this.runRequest2(this.getstoresurl, body);
   }
 
   private runRequest(url: string, body: string) {
