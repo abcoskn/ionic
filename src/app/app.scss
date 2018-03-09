@@ -22,11 +22,12 @@
 
 .pricebreakup{
 	border-radius: 10px!important;
-	//box-shadow: 0 16px 20px rgba(0,0,0,.4);
+	box-shadow: 0 16px 20px rgba(0,0,0,.4);
 }
 .pricebreakup .popover-content{
 	overflow:hidden;
 	width:80%!important;
 	height:60px!important;
+	top:30%!important;
 	left:10%!important;
 }

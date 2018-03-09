@@ -1,15 +1,13 @@
 page-stores-map {
+    
     #map{
-        height:100%;
+        height:50%;
         transition:0.4s;
+    }
+    #list{
+        height:50%;
     }
     .closebutton{
         margin-top:0px;
-    }
-    .pricebreakup .modal-wrapper{
-        margin-left: 10%;
-        margin-top: 50%;
-        width:80%!important;
-        height:50%!important;
     }
 }
