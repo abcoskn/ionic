@@ -50,7 +50,7 @@ mypoint:any;
     const location = new google.maps.LatLng(38.7270367398, 35.5181121826);
     const options={
       center:location,
-      zoom:15
+      zoom:30
     };
     this.map=new google.maps.Map(this.mapRef.nativeElement,options);
     
@@ -64,7 +64,6 @@ mypoint:any;
         icon:mypin
       });
       this.map.setCenter(new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude));
-      this.map.setZoom=8;
       let watch = this.geolocation.watchPosition();
       watch.subscribe((data) => {
         var latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
