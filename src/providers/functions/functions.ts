@@ -33,8 +33,9 @@ export class FunctionsProvider {
     var body='emailAddress='+username+'&password='+password;
     return this.runRequest2(this.loginurl, body);
   }
-  public getstores(){
-    return this.runRequest(this.getstoresurl, "");
+  public getstores(lat,lng){
+    var body='latitude='+lat+'&longitude='+lng;
+    return this.runRequest(this.getstoresurl, body);
   }
 
   private runRequest(url: string, body: string) {
