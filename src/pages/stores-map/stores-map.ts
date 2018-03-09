@@ -29,6 +29,7 @@ phone:any;
 items:any;
 profileModal:any;
 mypoint:any;
+latlng:any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -54,11 +55,6 @@ mypoint:any;
     };
     this.map=new google.maps.Map(this.mapRef.nativeElement,options);
     
-    var myMarker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP
-  });
-  this.addYourLocationButton(this.map, myMarker);
      
     this.geolocation.getCurrentPosition().then((resp) => {
       var mypin=new google.maps.MarkerImage("images/location.png", null, null, new google.maps.Point(35,35), new google.maps.Size(70,70));
@@ -68,12 +64,15 @@ mypoint:any;
         map:this.map,
         icon:mypin
       });
+      this.latlng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+
+      this.addYourLocationButton(this.map, this.mypoint,this.latlng);
       this.map.setCenter(new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude));
       this.map.setZoom(16);
       let watch = this.geolocation.watchPosition();
       watch.subscribe((data) => {
-        var latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
-        this.mypoint.setPosition(latlng);
+        this.latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
+        this.mypoint.setPosition(this.latlng);
         console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
       });
     }).catch((error) => {
@@ -117,7 +116,7 @@ mypoint:any;
   closewindow(){
     document.getElementById("map").style.height="100%";
   }
-  addYourLocationButton(map, marker) 
+  addYourLocationButton(map, marker,latlng) 
   {
       var controlDiv = document.createElement('div');
   
@@ -159,15 +158,12 @@ mypoint:any;
               //$('#you_location_img').css('background-position', imgX+'px 0px');
               document.getElementById("you_location_img").style.backgroundPosition=imgX+"px 0px";
           }, 500);
-          if(navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(function(position) {
-                  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          if(latlng) {
                   marker.setPosition(latlng);
                   map.setCenter(latlng);
                   clearInterval(animationInterval);
                   //$('#you_location_img').css('background-position', '-144px 0px');
                   document.getElementById("you_location_img").style.backgroundPosition="-144px 0px";
-              });
           }
           else{
               clearInterval(animationInterval);
