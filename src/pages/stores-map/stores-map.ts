@@ -52,10 +52,10 @@ mypoint:any;
       const location = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
       const options={
         center:location,
-        zoom:20
+        zoom:15
       };
       this.map=new google.maps.Map(this.mapRef.nativeElement,options);
-      var mypin=new google.maps.MarkerImage("images/location.png", null, null, null, new google.maps.Size(50,50));
+      var mypin=new google.maps.MarkerImage("images/location.png", null, null, new google.maps.Point(35,35), new google.maps.Size(70,70));
       this.mypoint=new google.maps.Marker({
         position:{lat:resp.coords.latitude,lng:resp.coords.longitude},
         flat:true,
@@ -67,7 +67,8 @@ mypoint:any;
      });
      let watch = this.geolocation.watchPosition();
      watch.subscribe((data) => {
-       this.mypoint.position={lat:data.coords.latitude,lng:data.coords.longitude}
+       var latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
+       this.mypoint.setPosition(latlng);
        console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
      });
     this.functions.getstores().subscribe(response =>{
