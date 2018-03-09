@@ -54,6 +54,11 @@ mypoint:any;
     };
     this.map=new google.maps.Map(this.mapRef.nativeElement,options);
     
+    var myMarker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP
+  });
+  this.addYourLocationButton(this.map, myMarker);
      
     this.geolocation.getCurrentPosition().then((resp) => {
       var mypin=new google.maps.MarkerImage("images/location.png", null, null, new google.maps.Point(35,35), new google.maps.Size(70,70));
