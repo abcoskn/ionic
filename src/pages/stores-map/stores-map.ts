@@ -58,17 +58,16 @@ mypoint:any;
     this.functions.getstores().subscribe(response =>{
       if(response.success!="false"){
         this.items=response;
-        let mypin=new google.maps.MarkerImage("images/location.png", null, null, null, new google.maps.Size(50,50));
-        this.geolocation.getCurrentPosition().then((resp) => {
+        let watch = this.geolocation.watchPosition();
+        watch.subscribe((data) => {
+          var mypin=new google.maps.MarkerImage("images/location.png", null, null, null, new google.maps.Size(50,50));
           this.mypoint=new google.maps.Marker({
-            position:{lat:resp.coords.latitude,lng:resp.coords.longitude},
+            position:{lat:data.coords.latitude,lng:data.coords.longitude},
             flat:true,
             map:this.map,
             icon:mypin
           });
-          console.log("lat:"+resp.coords.latitude+" lng:"+resp.coords.longitude)
-        }).catch((error) => {
-           console.log('Error getting location', error);
+          console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
         });
         this.items.forEach(element => {
           this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map);
