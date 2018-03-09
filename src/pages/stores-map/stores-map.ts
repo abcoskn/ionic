@@ -46,15 +46,16 @@ mypoint:any;
   }
 
   showMap(){
+
+    const location = new google.maps.LatLng(41.0773616191, 29.0117168426);
+    const options={
+      center:location,
+      zoom:15
+    };
+    this.map=new google.maps.Map(this.mapRef.nativeElement,options);
     
      
     this.geolocation.getCurrentPosition().then((resp) => {
-      const location = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-      const options={
-        center:location,
-        zoom:15
-      };
-      this.map=new google.maps.Map(this.mapRef.nativeElement,options);
       var mypin=new google.maps.MarkerImage("images/location.png", null, null, new google.maps.Point(35,35), new google.maps.Size(70,70));
       this.mypoint=new google.maps.Marker({
         position:{lat:resp.coords.latitude,lng:resp.coords.longitude},
@@ -62,15 +63,18 @@ mypoint:any;
         map:this.map,
         icon:mypin
       });
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
-     let watch = this.geolocation.watchPosition();
-     watch.subscribe((data) => {
-       var latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
-       this.mypoint.setPosition(latlng);
-       console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
-     });
+      this.map.setCenter(new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude));
+      this.map.setZoom=8;
+      let watch = this.geolocation.watchPosition();
+      watch.subscribe((data) => {
+        var latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
+        this.mypoint.setPosition(latlng);
+        console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
+      });
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
     this.functions.getstores().subscribe(response =>{
       if(response.success!="false"){
         this.items=response;
