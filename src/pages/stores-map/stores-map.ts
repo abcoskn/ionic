@@ -47,7 +47,7 @@ mypoint:any;
 
   showMap(){
 
-    const location = new google.maps.LatLng(41.0773616191, 29.0117168426);
+    const location = new google.maps.LatLng(38.7270367398, 35.5181121826);
     const options={
       center:location,
       zoom:15
