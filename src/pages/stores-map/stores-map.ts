@@ -73,6 +73,7 @@ latlng:any;
       watch.subscribe((data) => {
         this.latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
         this.mypoint.setPosition(this.latlng);
+        this.changeclick(this.map,this.mypoint,this.latlng);
         console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
       });
     }).catch((error) => {
@@ -116,11 +117,40 @@ latlng:any;
   closewindow(){
     document.getElementById("map").style.height="100%";
   }
+
+
+  changeclick(map,marker,latlng)
+  {
+    document.getElementById("firstChild").removeEventListener('click');
+    document.getElementById("firstChild").addEventListener('click', function() {
+      
+      var imgX = '0';
+      var animationInterval = setInterval(function(){
+          if(imgX == '-18') imgX = '0';
+          else imgX = '-18';
+          //$('#you_location_img').css('background-position', imgX+'px 0px');
+          document.getElementById("you_location_img").style.backgroundPosition=imgX+"px 0px";
+      }, 500);
+      if(latlng) {
+              marker.setPosition(latlng);
+              map.setCenter(latlng);
+              clearInterval(animationInterval);
+              //$('#you_location_img').css('background-position', '-144px 0px');
+              document.getElementById("you_location_img").style.backgroundPosition="-144px 0px";
+      }
+      else{
+          clearInterval(animationInterval);
+          //$('#you_location_img').css('background-position', '0px 0px');
+          document.getElementById("you_location_img").style.backgroundPosition="0px 0px";
+      }
+  });
+  }
   addYourLocationButton(map, marker,latlng) 
   {
       var controlDiv = document.createElement('div');
   
       var firstChild = document.createElement('button');
+      firstChild.id="firstChild";
       firstChild.style.backgroundColor = '#fff';
       firstChild.style.border = 'none';
       firstChild.style.outline = 'none';
@@ -146,32 +176,12 @@ latlng:any;
       firstChild.appendChild(secondChild);
   
       google.maps.event.addListener(map, 'dragend', function() {
+        
           //$('#you_location_img').css('background-position', '0px 0px');
           document.getElementById("you_location_img").style.backgroundPosition="0px 0px";
       });
-  
-      firstChild.addEventListener('click', function() {
-          var imgX = '0';
-          var animationInterval = setInterval(function(){
-              if(imgX == '-18') imgX = '0';
-              else imgX = '-18';
-              //$('#you_location_img').css('background-position', imgX+'px 0px');
-              document.getElementById("you_location_img").style.backgroundPosition=imgX+"px 0px";
-          }, 500);
-          if(latlng) {
-                  marker.setPosition(latlng);
-                  map.setCenter(latlng);
-                  clearInterval(animationInterval);
-                  //$('#you_location_img').css('background-position', '-144px 0px');
-                  document.getElementById("you_location_img").style.backgroundPosition="-144px 0px";
-          }
-          else{
-              clearInterval(animationInterval);
-              //$('#you_location_img').css('background-position', '0px 0px');
-              document.getElementById("you_location_img").style.backgroundPosition="0px 0px";
-          }
-      });
-  
+      
+      this.changeclick(map,marker,latlng);
       controlDiv.tabIndex = 1;
       map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
   }
