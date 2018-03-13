@@ -14,11 +14,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'yrcard.html',
 })
 export class YrcardPage {
-
+task1:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.task1=setTimeout(()=>{
+      if(document.getElementById("card").className=="")
+        document.getElementById("card").className="flipped";
+      else
+        document.getElementById("card").className="";
+    },1000);
+    this.task1=setTimeout(()=>{
+      if(document.getElementById("card").className=="")
+        document.getElementById("card").className="flipped";
+      else
+        document.getElementById("card").className="";
+    },2000);
   }
   flip(){
-    console.log(document.getElementById("card").className);
     if(document.getElementById("card").className=="")
       document.getElementById("card").className="flipped";
     else
