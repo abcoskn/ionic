@@ -172,7 +172,7 @@ latlng:any;
           }
       });
       
-  
+  //dfgdfg
       controlDiv.tabIndex = 1;
       map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
   }
