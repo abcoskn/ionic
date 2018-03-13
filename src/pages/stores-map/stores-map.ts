@@ -161,6 +161,7 @@ latlng:any;
           if(latlng) {
                   marker.setPosition(latlng);
                   map.setCenter(latlng);
+                  //map.panTo(latlng);
                   clearInterval(animationInterval);
                   //$('#you_location_img').css('background-position', '-144px 0px');
                   document.getElementById("you_location_img").style.backgroundPosition="-144px 0px";
@@ -172,7 +173,6 @@ latlng:any;
           }
       });
       
-  //dfgdfg
       controlDiv.tabIndex = 1;
       map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
   }
