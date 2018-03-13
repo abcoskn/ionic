@@ -33,10 +33,16 @@ export class FunctionsProvider {
     var body='emailAddress='+username+'&password='+password;
     return this.runRequest2(this.loginurl, body);
   }
-  public getstores(){
-    return this.runRequest(this.getstoresurl, "");
+  
+  public getstores(latitude,longitude){
+    var body='latitude='+latitude+'&longitude='+longitude;
+    return this.runRequest(this.getstoresurl,body);
   }
-
+  /*/
+  public getstores(){
+    return this.runRequest(this.getstoresurl,"");
+  }
+/*/
   private runRequest(url: string, body: string) {
     let headers = new Headers({
         'Content-Type': 'application/x-www-form-urlencoded'

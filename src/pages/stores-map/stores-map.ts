@@ -30,6 +30,9 @@ items:any;
 profileModal:any;
 mypoint:any;
 latlng:any;
+lat:any;
+lng:any;
+storeslist: any = new Array<any>();
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -49,6 +52,7 @@ latlng:any;
   showMap(){
 
     const location = new google.maps.LatLng(39.564056, 34.506425);
+    console.log(location.lat);
     const options={
       center:location,
       zoom:5
@@ -65,6 +69,8 @@ latlng:any;
         icon:mypin
       });
       this.latlng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      this.lat=resp.coords.latitude;
+      this.lng=resp.coords.longitude;
 
       this.addYourLocationButton(this.map, this.mypoint,this.latlng);
       this.map.setCenter(new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude));
@@ -73,22 +79,35 @@ latlng:any;
       watch.subscribe((data) => {
         this.latlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
         this.mypoint.setPosition(this.latlng);
-        console.log("lat:"+data.coords.latitude+" lng:"+data.coords.longitude)
       });
+
+      this.functions.getstores(this.lat,this.lng).subscribe(response =>{
+        if(response.success!="false"){
+          this.items=response;
+          for(var i=0;i<5;i++)
+            this.storeslist.push(this.items[i]);
+          this.items.forEach(element => {
+            this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map,element.distance);
+          });
+  
+        }
+      });
+
     }).catch((error) => {
       console.log('Error getting location', error);
+      this.functions.getstores("","").subscribe(response =>{
+        if(response.success!="false"){
+          this.items=response;
+          
+          this.items.forEach(element => {
+            this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map,element.distance);
+          });
+  
+        }
+      });
     });
 
-    this.functions.getstores().subscribe(response =>{
-      if(response.success!="false"){
-        this.items=response;
-        
-        this.items.forEach(element => {
-          this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map,element.distance);
-        });
-
-      }
-    });
+    
   }
   addMarker(name,phone,address,lat,lng,map,distance){
     var myIcon = new google.maps.MarkerImage("images/yrmarker.png", null, null, null, new google.maps.Size(27,60));
