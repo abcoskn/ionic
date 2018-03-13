@@ -10,6 +10,8 @@ import { MyaccountPage } from '../pages/myaccount/myaccount';
 import { ActbeautifulPage } from '../pages/actbeautiful/actbeautiful';
 import { StoresMapPage } from '../pages/stores-map/stores-map';
 import { StoreInfoPage } from '../pages/store-info/store-info';
+import { TabsPage } from '../pages/tabs/tabs';
+import { YrcardPage } from '../pages/yrcard/yrcard';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +27,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyaccountPage,
     ActbeautifulPage,
     StoresMapPage,
-    StoreInfoPage
+    StoreInfoPage,
+    TabsPage,
+    YrcardPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyaccountPage,
     ActbeautifulPage,
     StoresMapPage,
-    StoreInfoPage
+    StoreInfoPage,
+    TabsPage,
+    YrcardPage
   ],
   providers: [
     StatusBar,
