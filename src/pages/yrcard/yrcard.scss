@@ -38,4 +38,16 @@ page-yrcard {
       #card.flipped {
         transform: rotateY( 180deg );
       }
+
+      #hand{
+        background-image:url("../images/hand.png");
+        background-size:100%;
+        width:80px;
+        height:80px;
+        position:relative;
+        margin:auto;
+        top:40%;
+        transition:zoom 0.2s;
+        transition:0.8s;
+      }
 }
