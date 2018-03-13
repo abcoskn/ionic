@@ -84,13 +84,13 @@ latlng:any;
         this.items=response;
         
         this.items.forEach(element => {
-          this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map);
+          this.addMarker(element.name,element.phone,element.address,parseFloat(element.latitude),parseFloat(element.longitude),this.map,element.distance);
         });
 
       }
     });
   }
-  addMarker(name,phone,address,lat,lng,map){
+  addMarker(name,phone,address,lat,lng,map,distance){
     var myIcon = new google.maps.MarkerImage("images/yrmarker.png", null, null, null, new google.maps.Size(27,60));
     let marker= new google.maps.Marker({
       position:{lat:lat,lng:lng},
@@ -99,18 +99,18 @@ latlng:any;
       icon:myIcon
     });
     google.maps.event.addListener(marker, 'click', () => {
-      this.setStoreInfo(name,phone,address);
+      this.setStoreInfo(name,phone,address,distance);
       //map, marker);
     });
     return marker;
   }
-  setStoreInfo(name,phone,address){
+  setStoreInfo(name,phone,address,distance){
     this.name=name;
     this.phone=phone;
     this.address=address;
     //this.profileModal = this.modalCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
     //this.profileModal.present();
-    let popover=this.popoverCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
+    let popover=this.popoverCtrl.create(StoreInfoPage, { name:name,phone:phone,address:address,distance:distance },{showBackdrop: true,enableBackdropDismiss: true,cssClass : 'pricebreakup'});
     popover.present()
   }
   closewindow(){
