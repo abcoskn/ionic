@@ -28,12 +28,41 @@ page-yrcard {
           background-position:center top;
           background-repeat:no-repeat;
       }
+      #card .front .cardinfo {
+        transform: rotate(90deg);
+        margin-top: 87px;
+        padding-top: 68px;
+      }
+      #card .front .cardnum {
+        margin-bottom: 32px;
+        font-size: 18px;
+      }
+      #card .front .fullname {
+      }
+
+
+
+
       #card .back {
           background-image:url('../images/yrkartarka.png');
           background-size:100% auto;
           background-position:center top;
           background-repeat:no-repeat;
         transform: rotateY( 180deg );
+        display: table;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
+      #card .back .outer {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      #card .back .outer svg {
+        margin-left: auto;
+        margin-right: auto;
+        display:block;
+        transform:rotate(-90deg)!important;
       }
       #card.flipped {
         transform: rotateY( 180deg );
@@ -51,4 +80,5 @@ page-yrcard {
         transition:0.8s;
         z-index:9999;
       }
+      
 }

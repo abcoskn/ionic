@@ -1,7 +1,7 @@
 <ion-content>
   <div id="card" (click)="flip()">
-    <figure class="front"></figure>
-    <figure class="back"></figure>
+    <figure class="front"><div class="cardinfo"><div class="cardnum">{{cardnum}}</div><div class="fullname">{{fullname}}</div></div></figure>
+    <figure class="back"><div class="outer"><svg #barcode id="barcode"></svg></div></figure>
   </div>
   <div id="hand"></div>
 </ion-content>
