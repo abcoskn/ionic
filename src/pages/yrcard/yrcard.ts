@@ -16,18 +16,26 @@ import JsBarcode from 'jsbarcode';
 })
 export class YrcardPage {
 task1:any;
-fullname:any;
-cardnum:any;
-
+name:any;
+fname:any;
+cardnum:any=" ";
+userid:any;
 @ViewChild('barcode') barcode: ElementRef;
 ngAfterViewInit() {
-  JsBarcode(this.barcode.nativeElement, '1283298');
+  JsBarcode(this.barcode.nativeElement,this.cardnum);
 }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
-    this.cardnum="1283298";
-    this.fullname="ABDULLAH YAŞAR COŞKUN";
+
+    this.userid=window.localStorage.getItem("userid");
+    if (!isNaN(this.userid) && this.userid!=null)
+    {
+      this.name=window.localStorage.getItem("name");
+      this.fname=window.localStorage.getItem("fname");
+      this.cardnum=window.localStorage.getItem("cardid");
+    }
+
 
     this.task1=setTimeout(()=>{
       document.getElementById("hand").style.zoom="0.8";

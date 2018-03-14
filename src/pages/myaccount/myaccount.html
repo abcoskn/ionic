@@ -16,18 +16,13 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content *ngIf="!log" padding>
   <h6>Fırsatlardan faydalanmak için oturum açın</h6>
   <ion-list>
       
         <ion-item>
-          <ion-label fixed>E-posta</ion-label>
-          <ion-input type="text" [(ngModel)]="email" placeholder="someone@example.com"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label fixed>Şifre</ion-label>
-          <ion-input type="password" [(ngModel)]="password" placeholder="123456"></ion-input>
+          <ion-label fixed>Telefon Numaranız</ion-label>
+          <ion-input type="text" [(ngModel)]="phone" placeholder="5338334343"></ion-input>
         </ion-item>
          
       </ion-list>
@@ -38,4 +33,10 @@
       <button ion-button color="rocher" (click)="login()" block>Oturum aç</button>
 
       <h2><span>YA DA</span></h2>
+</ion-content>
+
+
+<ion-content *ngIf="log" padding>
+  {{name}} {{fname}}
+  <button ion-button (click)="logout()">Çıkış Yap</button>
 </ion-content>

@@ -18,7 +18,11 @@ export class FunctionsProvider {
   private baseUrl: string = "http://188.119.14.66:8888/webapi/";
   private loginurl:string;
   private getstoresurl:string;
+  private getuserurl:string;
 
+
+  public userid;
+  local:any;
 
   constructor(
     public http: Http,
@@ -27,11 +31,17 @@ export class FunctionsProvider {
     public alertCtrl: AlertController
   ) {
     this.initURL(this.baseUrl);
+    this.local = window.localStorage;
   }
 
-  public login(username,password){
-    var body='emailAddress='+username+'&password='+password;
-    return this.runRequest2(this.loginurl, body);
+  public login(phone){
+    var body='phone='+phone;
+    return this.runRequest(this.loginurl, body);
+  }
+  public getuser(){
+    this.initGetUserInfo();
+    var body='userid='+this.userid;
+    return this.runRequest(this.getuserurl, body);
   }
   
   public getstores(latitude,longitude){
@@ -43,6 +53,10 @@ export class FunctionsProvider {
     return this.runRequest(this.getstoresurl,"");
   }
 /*/
+
+
+
+
   private runRequest(url: string, body: string) {
     let headers = new Headers({
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -65,9 +79,14 @@ export class FunctionsProvider {
       .map(response => response.text());
   }
   
+  private initGetUserInfo() {
+    this.userid = this.local.getItem('userid');
+  }
+
   private initURL(_baseURL: string) {
-    this.loginurl = _baseURL +"sdf.php";
+    this.loginurl = _baseURL +"users.php";
     this.getstoresurl = _baseURL +"stores.php";
+    this.getuserurl = _baseURL +"getuser.php";
 
   }
 
