@@ -23,7 +23,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,private screenOrientation: ScreenOrientation) {
     this.initializeApp();
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Ana Sayfa', component: TabsPage },
