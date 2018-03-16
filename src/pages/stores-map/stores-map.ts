@@ -1,5 +1,5 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController,PopoverController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController,PopoverController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 

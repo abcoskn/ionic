@@ -1,0 +1,32 @@
+<!--
+  Generated template for the SelectaccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Kart Numaranızı Seçin</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="complate()">Bitti</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list [(ngModel)]="account" radio-group>
+    <p>Birden fazla hesabınız olduğunu tespit ettik. Lütfen aşağıdan kullanmaya devam etmek istediğiniz hesabınızın kart numarasını seçin.</p>
+    <ion-list-header>
+      Kart Numaralarınız
+    </ion-list-header>
+  
+    <ion-item *ngFor="let item of items">
+      <ion-label>{{item.TCARDCST}}</ion-label>
+      <ion-radio value="{{item.CSTID}}"></ion-radio>
+    </ion-item>
+  
+  </ion-list>
+</ion-content>

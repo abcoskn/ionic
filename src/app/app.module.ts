@@ -13,6 +13,7 @@ import { StoresMapPage } from '../pages/stores-map/stores-map';
 import { StoreInfoPage } from '../pages/store-info/store-info';
 import { TabsPage } from '../pages/tabs/tabs';
 import { YrcardPage } from '../pages/yrcard/yrcard';
+import { SelectaccountPage } from '../pages/selectaccount/selectaccount';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,7 +31,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     StoresMapPage,
     StoreInfoPage,
     TabsPage,
-    YrcardPage
+    YrcardPage,
+    SelectaccountPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     StoresMapPage,
     StoreInfoPage,
     TabsPage,
-    YrcardPage
+    YrcardPage,
+    SelectaccountPage
   ],
   providers: [
     StatusBar,
