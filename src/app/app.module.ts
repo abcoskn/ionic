@@ -14,6 +14,8 @@ import { StoreInfoPage } from '../pages/store-info/store-info';
 import { TabsPage } from '../pages/tabs/tabs';
 import { YrcardPage } from '../pages/yrcard/yrcard';
 import { SelectaccountPage } from '../pages/selectaccount/selectaccount';
+import { OrderHistoryPage } from '../pages/order-history/order-history';
+import { GreenProductsPage } from '../pages/green-products/green-products';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +34,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     StoreInfoPage,
     TabsPage,
     YrcardPage,
-    SelectaccountPage
+    SelectaccountPage,
+    OrderHistoryPage,
+    GreenProductsPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     StoreInfoPage,
     TabsPage,
     YrcardPage,
-    SelectaccountPage
+    SelectaccountPage,
+    OrderHistoryPage,
+    GreenProductsPage
   ],
   providers: [
     StatusBar,

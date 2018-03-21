@@ -1,0 +1,35 @@
+<!--
+  Generated template for the OrderHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="rocher">
+    <ion-title>Sipariş Geçmişim</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngFor="let item of items">
+    <ion-card-header>
+      {{item.DTRNSFIS}} <span *ngIf="item.CTYPEFIS=='501'"> - <span style="color:brown">iade</span></span>
+    </ion-card-header>
+  
+    <ion-list>
+      <button ion-item *ngFor="let detail of item.detail">
+        <h2>{{detail.TNENGSTK}}</h2>
+        <p>{{detail.STKID}}</p>
+      </button>
+  
+      <ion-item>
+        <span item-right style="font-weight:bold">{{item.total}} TL</span>
+        <span item-right style="text-decoration:line-through;font-size:14px">{{item.NAMNTFIS}} TL</span>
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+</ion-content>

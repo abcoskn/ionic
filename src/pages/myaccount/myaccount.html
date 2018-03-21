@@ -45,7 +45,7 @@
     <div class="photo"><img src="images/photo.png" /></div>
     <div class="name">{{name}} {{fname}}</div>
     <div class="point">472 Puan</div>
-    <button ion-button block class="treebutton">
+    <button ion-button block class="treebutton" (click)="greenproducts()">
       <img src="images/tree2.png" width="32" />&nbsp;
       Senin için 8 ağaç dikildi
     </button>
@@ -70,9 +70,9 @@
         <ion-icon name="notifications" item-start></ion-icon>
         Bilgilendirme Taleplerim
       </button>
-      <button ion-item>
+      <button ion-item (click)="ordersHistory()">
         <ion-icon name="clock" item-start></ion-icon>
-        Geçmiş Siparişlerim
+        Sipariş Geçmişim
       </button>
       <button ion-item>
         <ion-icon name="help" item-start></ion-icon>

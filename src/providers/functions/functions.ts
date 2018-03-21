@@ -19,6 +19,8 @@ export class FunctionsProvider {
   private loginurl:string;
   private getstoresurl:string;
   private getuserurl:string;
+  private getordershistoryurl:string;
+  private getgreenproductsurl:string;
 
 
   public userid;
@@ -48,11 +50,16 @@ export class FunctionsProvider {
     var body='latitude='+latitude+'&longitude='+longitude;
     return this.runRequest(this.getstoresurl,body);
   }
-  /*/
-  public getstores(){
-    return this.runRequest(this.getstoresurl,"");
+  
+  public getOrdersHistory(){
+    this.initGetUserInfo();
+    var body='userid='+this.userid;
+    return this.runRequest(this.getordershistoryurl, body);
   }
-/*/
+  public getGreenProducts(){
+    this.initGetUserInfo();
+    return this.runRequest(this.getgreenproductsurl, "");
+  }
 
 
 
@@ -87,6 +94,8 @@ export class FunctionsProvider {
     this.loginurl = _baseURL +"users.php";
     this.getstoresurl = _baseURL +"stores.php";
     this.getuserurl = _baseURL +"getuser.php";
+    this.getordershistoryurl = _baseURL +"getorderhistory.php";
+    this.getgreenproductsurl = _baseURL +"greenproducts.php";
 
   }
 

@@ -1,0 +1,33 @@
+<!--
+  Generated template for the GreenProductsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="rocher">
+    <ion-title>I Love My Planet</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list [(ngModel)]="account" radio-group>
+    <p>Küçücük bir şişe ile devasa sonuçlar : Satın alınan aşağıdaki I Love My Planet logolu her bir ürün için Yves Rocher Vakfı - Institut de France bir ağaç dikiyor. Artık I Love My Planet logolu ürünleri denemek için hazır mısınız?</p>
+    <ion-list-header>
+      I LOVE MY PLANET LOGOLU ÜRÜNLER
+    </ion-list-header>
+  
+    <ion-item *ngFor="let item of items">
+      <ion-thumbnail item-start>
+        <img src="https://www.yvesrocher.com.tr/images/catalog/products/window1/{{item.productid}}.jpg">
+      </ion-thumbnail>
+      <h2>{{item.name}}</h2>
+      <p>{{item.productid}}</p>
+      <button ion-button clear item-end>View</button>
+    </ion-item>
+  
+  </ion-list>
+</ion-content>

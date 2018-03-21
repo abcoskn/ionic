@@ -18,7 +18,6 @@ items:any;
 account:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController) {
     this.items=this.navParams.get("items");
-    console.log(this.items);
   }
 
   complate(){

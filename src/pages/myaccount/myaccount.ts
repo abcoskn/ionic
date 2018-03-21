@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { FunctionsProvider } from '../../providers/functions/functions';
 import { SelectaccountPage } from '../selectaccount/selectaccount';
+import { OrderHistoryPage } from '../order-history/order-history';
+import { GreenProductsPage } from '../green-products/green-products';
 /**
  * Generated class for the MyaccountPage page.
  *
@@ -32,7 +34,7 @@ export class MyaccountPage {
     }
     else
       this.log=false;
-    }
+  }   
 
   login(){
     this.functions.presentLoading("Giriş Yapılıyor..");
@@ -55,6 +57,7 @@ export class MyaccountPage {
         }
         else
         {
+          this.item=response[0];
           window.localStorage.setItem("userid",response[0]["CSTID"]);
           window.localStorage.setItem("cardid",response[0]["TCARDCST"]);
           window.localStorage.setItem("name",response[0]["TNAMECST"]);
@@ -71,5 +74,12 @@ export class MyaccountPage {
     
     window.localStorage.clear();
     this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  }
+
+  ordersHistory(){
+    this.navCtrl.push(OrderHistoryPage);
+  }
+  greenproducts(){
+    this.navCtrl.push(GreenProductsPage);
   }
 }

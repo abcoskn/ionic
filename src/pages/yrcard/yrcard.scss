@@ -12,6 +12,8 @@ page-yrcard {
         height: 401px;
         position: absolute;
         transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
         transition: transform 1s;
       }
       #card figure {
@@ -30,6 +32,8 @@ page-yrcard {
       }
       #card .front .cardinfo {
         transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
         margin-top: 87px;
         padding-top: 68px;
       }
@@ -49,6 +53,8 @@ page-yrcard {
           background-position:center top;
           background-repeat:no-repeat;
         transform: rotateY( 180deg );
+        -webkit-transform: rotateY( 180deg );
+        -ms-transform: rotateY( 180deg );
         display: table;
         position: absolute;
         height: 100%;
@@ -63,10 +69,15 @@ page-yrcard {
         margin-right: auto;
         display:block;
         transform:rotate(90deg)!important;
+        -webkit-transform:rotate(90deg)!important;
+        -ms-transform:rotate(90deg)!important;
       }
       #card.flipped {
         transform: rotateY( 180deg );
+        -webkit-transform: rotateY( 180deg );
+        -ms-transform: rotateY( 180deg );
       }
+
 
       #hand{
         background-image:url("../images/hand.png");
