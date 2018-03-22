@@ -24,13 +24,19 @@ export class MyaccountPage {
   name:any;
   fname:any;
   selectedaccount:any;
+  point:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public functions:FunctionsProvider,public modalCtrl: ModalController) {
+    
+
+    
     this.userid=window.localStorage.getItem("userid");
     if (!isNaN(this.userid) && this.userid!=null)
     {
       this.log=true;
       this.name=window.localStorage.getItem("name");
       this.fname=window.localStorage.getItem("fname");
+      this.point=window.localStorage.getItem("point");
     }
     else
       this.log=false;
@@ -43,7 +49,6 @@ export class MyaccountPage {
         this.functions.loading.dismiss();
         if(response.length>1)
         {
-          
           let radios = this.modalCtrl.create(SelectaccountPage, { items:response });
           radios.present();
           radios.onDidDismiss(data => {
@@ -57,11 +62,11 @@ export class MyaccountPage {
         }
         else
         {
-          this.item=response[0];
           window.localStorage.setItem("userid",response[0]["CSTID"]);
           window.localStorage.setItem("cardid",response[0]["TCARDCST"]);
           window.localStorage.setItem("name",response[0]["TNAMECST"]);
           window.localStorage.setItem("fname",response[0]["TFNAMCST"]);
+          window.localStorage.setItem("point",response[0]["point"]);
           this.log=true;
           this.navCtrl.setRoot(this.navCtrl.getActive().component);
           this.functions.showAlert("Giriş Başarılı!","Başarıyla giriş yaptınız.","Tamam");
@@ -71,15 +76,19 @@ export class MyaccountPage {
   }
 
   logout(){
-    
     window.localStorage.clear();
     this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }
-
   ordersHistory(){
     this.navCtrl.push(OrderHistoryPage);
   }
   greenproducts(){
     this.navCtrl.push(GreenProductsPage);
+  }
+  update(){
+    this.point="edef";
+  }
+  update2(){
+    console.log(this.point);
   }
 }

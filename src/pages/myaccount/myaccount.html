@@ -44,7 +44,7 @@
   <div class="profile">
     <div class="photo"><img src="images/photo.png" /></div>
     <div class="name">{{name}} {{fname}}</div>
-    <div class="point">472 Puan</div>
+    <div class="point">{{point}} Puan</div>
     <button ion-button block class="treebutton" (click)="greenproducts()">
       <img src="images/tree2.png" width="32" />&nbsp;
       Senin için 8 ağaç dikildi
@@ -52,13 +52,13 @@
     <ion-grid>
       <ion-row>
         <ion-col col-6>
-          <button ion-button icon-left full class="favorite">
+          <button ion-button icon-left full class="favorite" (click)="update()">
             <ion-icon name="star"></ion-icon> 
             Favoriler
           </button>
         </ion-col>
         <ion-col col-6>
-          <button ion-button icon-left full class="save">
+          <button ion-button icon-left full class="save" (click)="update2()">
             <ion-icon name="sync"></ion-icon> 
             Save For Later
           </button>

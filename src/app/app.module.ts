@@ -16,12 +16,15 @@ import { YrcardPage } from '../pages/yrcard/yrcard';
 import { SelectaccountPage } from '../pages/selectaccount/selectaccount';
 import { OrderHistoryPage } from '../pages/order-history/order-history';
 import { GreenProductsPage } from '../pages/green-products/green-products';
+import { ScanBarcodePage } from '../pages/scan-barcode/scan-barcode';
+import { ProductPage } from '../pages/product/product';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FunctionsProvider } from '../providers/functions/functions';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Geolocation } from '@ionic-native/geolocation';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     YrcardPage,
     SelectaccountPage,
     OrderHistoryPage,
-    GreenProductsPage
+    GreenProductsPage,
+    ScanBarcodePage,
+    ProductPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,9 @@ import { Geolocation } from '@ionic-native/geolocation';
     YrcardPage,
     SelectaccountPage,
     OrderHistoryPage,
-    GreenProductsPage
+    GreenProductsPage,
+    ScanBarcodePage,
+    ProductPage
   ],
   providers: [
     StatusBar,
@@ -65,7 +72,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     FunctionsProvider,
     InAppBrowser,
     Geolocation,
-    ScreenOrientation
+    ScreenOrientation,
+    BarcodeScanner
   ]
 })
 export class AppModule {}

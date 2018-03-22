@@ -29,6 +29,7 @@ account:any;
         window.localStorage.setItem("cardid",this.items[i]["TCARDCST"]);
         window.localStorage.setItem("name",this.items[i]["TNAMECST"]);
         window.localStorage.setItem("fname",this.items[i]["TFNAMCST"]);
+        window.localStorage.setItem("point",this.items[i]["point"]);
         break;
       }
     }

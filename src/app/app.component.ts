@@ -10,6 +10,8 @@ import { MyaccountPage } from '../pages/myaccount/myaccount';
 import { ActbeautifulPage } from '../pages/actbeautiful/actbeautiful';
 import { StoresMapPage } from '../pages/stores-map/stores-map';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ScanBarcodePage } from '../pages/scan-barcode/scan-barcode';
+import { ProductPage } from '../pages/product/product';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +32,8 @@ export class MyApp {
       { title: 'Kategoriler', component: ListPage },
       { title: 'Act Beautiful', component: ActbeautifulPage },
       { title: 'Hesabım', component: MyaccountPage },
-      { title: 'Mağazalar', component: StoresMapPage }
+      { title: 'Mağazalar', component: StoresMapPage },
+      { title: 'Barkod Tara', component: ScanBarcodePage }
     ];
 
   }
