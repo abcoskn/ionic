@@ -5,85 +5,18 @@
     </button>
     <ion-title>Ürünler</ion-title>
   </ion-navbar>
-  <img class="header-image" src="images/header.jpg">
 </ion-header>
 
 <ion-content>
   
-    <ion-list>
+
+      <ion-card *ngFor="let item of items" (click)="sublist(item.name,item.childs)">
+          <img src="https://www.yvesrocher.com.tr/images/mobile/catalog/category/{{item.category}}@2x.gif"/>
+          <div class="card-back">
+            </div>
+            <div class="card-title">{{item.name}}</div>
+            <div class="card-subtitle">23 Ürün</div>
+        </ion-card>
       
-      
-        <ion-item>
-            <ion-thumbnail item-start>
-              <img src="images/category/1000.jpg">
-            </ion-thumbnail>
-            <h2>CİLT BAKIMI</h2>
-            <button ion-button clear icon-only item-end>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="images/category/2000.jpg">
-            </ion-thumbnail>
-            <h2>MAKYAJ</h2>
-            <button ion-button clear icon-only item-end>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="images/category/3000.jpg">
-            </ion-thumbnail>
-            <h2>PARFÜM</h2>
-            <button ion-button clear icon-only item-end>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="images/category/4000.jpg">
-            </ion-thumbnail>
-            <h2>VÜCUT & GÜNEŞ ÜRÜNLERİ</h2>
-            <button ion-button clear icon-only item-end>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="images/category/5000.jpg">
-            </ion-thumbnail>
-            <h2>SAÇ ÜRÜNLERİ</h2>
-            <button ion-button clear icon-only item-end>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="images/category/6000.jpg">
-            </ion-thumbnail>
-            <h2>BANYO ÜRÜNLERİ</h2>
-            <button ion-button clear icon-only item-end>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="images/category/9000.jpg">
-            </ion-thumbnail>
-            <h2>HEDİYE ÖNERİLERİ</h2>
-            <button ion-button clear icon-only item-end>
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-        
-      </ion-list>
 
 </ion-content>

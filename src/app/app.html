@@ -7,9 +7,52 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+      <div *ngFor="let p of pages">
+        <div *ngIf="p.title=='Kategoriler'">
+          <ion-item (click)="categorymenu()">
+            {{p.title}}
+            <ion-icon name="add" *ngIf="categories == false" item-end></ion-icon>
+            <ion-icon name="remove" *ngIf="categories == true" item-end></ion-icon>
+          </ion-item>
+          <div class="submenu" [ngClass]="categories == true ? 'showmenu': 'hidemenu'">
+            <div *ngFor="let item of items">
+                <button ion-item *ngIf="item.childs.length==0" (click)="submenu(item)">
+                  {{item.name}}
+                </button>
+                <ion-item *ngIf="item.childs.length>0" (click)="submenu(item)">
+                  <ion-avatar item-start>
+                    <img src="https://www.yvesrocher.com.tr/images/mobile/catalog/category/{{item.category}}@2x.gif">
+                  </ion-avatar>
+                  {{item.name}}
+                  <ion-icon name="add" *ngIf="item.show == false" item-end></ion-icon>
+                  <ion-icon name="remove" *ngIf="item.show == true" item-end></ion-icon>
+                </ion-item>
+              <div class="submenu" [ngClass]="item.show == true ? 'showmenu': 'hidemenu'">
+                <div *ngFor="let subitem of item.childs">
+                  <button ion-item *ngIf="subitem.childs.length==0" (click)="submenu(subitem)">
+                    {{subitem.name}}
+                  </button>
+                  <ion-item *ngIf="subitem.childs.length>0" (click)="submenu(subitem)">
+                      {{subitem.name}}
+                      <ion-icon name="add" *ngIf="subitem.show == false" item-end></ion-icon>
+                      <ion-icon name="remove" *ngIf="subitem.show == true" item-end></ion-icon>
+                  </ion-item>
+                  <div class="submenu" [ngClass]="subitem.show == true ? 'showmenu': 'hidemenu'">
+                    <div *ngFor="let subsubitem of subitem.childs">
+                      <button ion-item (click)="submenu(subsubitem)">
+                        {{subsubitem.name}}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button menuClose ion-item *ngIf="p.title!='Kategoriler'" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+      </div>
     </ion-list>
   </ion-content>
 

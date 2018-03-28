@@ -62,3 +62,18 @@
 .tab-button-icon{
 	color:#89941b!important;
 }
+
+
+.submenu{
+	padding-left:15px;
+}
+.hidemenu{
+	overflow:hidden;
+    max-height: 0;
+    transition: 0.15s ease-out;
+}
+.showmenu{
+	overflow:hidden;
+    max-height: 1000px;
+    transition: 0.25s ease-in;
+}
