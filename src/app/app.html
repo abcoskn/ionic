@@ -16,10 +16,10 @@
           </ion-item>
           <div class="submenu" [ngClass]="categories == true ? 'showmenu': 'hidemenu'">
             <div *ngFor="let item of items">
-                <button ion-item *ngIf="item.childs.length==0" (click)="submenu(item)">
+                <button ion-item *ngIf="item.childs.length==0" (click)="submenu(items,item)">
                   {{item.name}}
                 </button>
-                <ion-item *ngIf="item.childs.length>0" (click)="submenu(item)">
+                <ion-item *ngIf="item.childs.length>0" (click)="submenu(items,item)">
                   <ion-avatar item-start>
                     <img src="https://www.yvesrocher.com.tr/images/mobile/catalog/category/{{item.category}}@2x.gif">
                   </ion-avatar>
@@ -29,17 +29,17 @@
                 </ion-item>
               <div class="submenu" [ngClass]="item.show == true ? 'showmenu': 'hidemenu'">
                 <div *ngFor="let subitem of item.childs">
-                  <button ion-item *ngIf="subitem.childs.length==0" (click)="submenu(subitem)">
+                  <button ion-item *ngIf="subitem.childs.length==0" (click)="submenu(item.childs,subitem)">
                     {{subitem.name}}
                   </button>
-                  <ion-item *ngIf="subitem.childs.length>0" (click)="submenu(subitem)">
+                  <ion-item *ngIf="subitem.childs.length>0" (click)="submenu(item.childs,subitem)">
                       {{subitem.name}}
                       <ion-icon name="add" *ngIf="subitem.show == false" item-end></ion-icon>
                       <ion-icon name="remove" *ngIf="subitem.show == true" item-end></ion-icon>
                   </ion-item>
                   <div class="submenu" [ngClass]="subitem.show == true ? 'showmenu': 'hidemenu'">
                     <div *ngFor="let subsubitem of subitem.childs">
-                      <button ion-item (click)="submenu(subsubitem)">
+                      <button ion-item (click)="submenu(subitem.childs,subsubitem)">
                         {{subsubitem.name}}
                       </button>
                     </div>

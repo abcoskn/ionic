@@ -66,11 +66,15 @@ export class MyApp {
     else
       this.categories=true;
   }
-  submenu(item){
+  submenu(items,item){
+    console.log(item);
     if(item.childs.length>0)
     {
       if(item.show==false)
       {
+        items.forEach(element => {
+          element.show=false;
+        });
         item.show=true;
       }
       else
