@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
+import { CategoryPage } from '../pages/category/category';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MyaccountPage } from '../pages/myaccount/myaccount';
@@ -67,7 +68,6 @@ export class MyApp {
       this.categories=true;
   }
   submenu(items,item){
-    console.log(item);
     if(item.childs.length>0)
     {
       if(item.show==false)
@@ -81,6 +81,9 @@ export class MyApp {
       {
         item.show=false;
       }
+    }
+    else{
+      this.nav.push(TabsPage,{componentFromNavParams:CategoryPage,params:{title:item.name,category:item.category}});
     }
   }
 

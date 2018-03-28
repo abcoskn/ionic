@@ -15,16 +15,23 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   tab1Root: any = HomePage;
-  tab2Root: any = YrcardPage;
+  tab2Root: any = HomePage;
   tab3Root: any = StoresMapPage;
   tab4Root: any = MyaccountPage;
+  tab1Params:any;
   myIndex: number;
 
   task:any;
   notifications:any;
   messages:any;
-  constructor(public events: Events,public functions:FunctionsProvider,navParams: NavParams,public modalCtrl: ModalController) {
+  constructor(public events: Events,public functions:FunctionsProvider,navParams: NavParams,public modalCtrl: ModalController,public navCtrl: NavController) {
    
+    let getComponentFromNavPArams = navParams.get('componentFromNavParams');
+    if (getComponentFromNavPArams != undefined) {
+      this.tab1Root = getComponentFromNavPArams;
+      this.tab1Params={ params: navParams.get("params")};
+    }
+    else
     this.myIndex = navParams.data.tabIndex || 0;
     
   }
@@ -37,5 +44,8 @@ export class TabsPage {
   tabSelected(){
     console.log("tab selected");
     this.events.publish('functionCall:tabSelected');
+  }
+  openhome(){
+    this.tab1Root=HomePage;
   }
 }

@@ -22,6 +22,7 @@ export class FunctionsProvider {
   private getordershistoryurl:string;
   private getgreenproductsurl:string;
   private getcategoriesurl:string;
+  private getproductsurl:string;
 
 
   public userid;
@@ -65,6 +66,11 @@ export class FunctionsProvider {
     this.initGetUserInfo();
     return this.runRequest(this.getcategoriesurl, "");
   }
+  public getProducts(category){
+    this.initGetUserInfo();
+    var body='category='+category;
+    return this.runRequest(this.getproductsurl, body);
+  }
 
 
 
@@ -102,6 +108,7 @@ export class FunctionsProvider {
     this.getordershistoryurl = _baseURL +"getorderhistory.php";
     this.getgreenproductsurl = _baseURL +"greenproducts.php";
     this.getcategoriesurl = _baseURL +"categories.php";
+    this.getproductsurl = _baseURL +"products.php";
 
   }
 

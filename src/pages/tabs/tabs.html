@@ -1,5 +1,5 @@
 <ion-tabs [selectedIndex]="myIndex" class="tabs" style="background-color: purple;">
-  <ion-tab [root]="tab1Root" tabIcon="home"></ion-tab>
+  <ion-tab (ionSelect)="openhome()" [root]="tab1Root" [rootParams]="tab1Params" tabIcon="home"></ion-tab>
   <ion-tab (ionSelect)="showcard()" tabIcon="card" class="cardtab"></ion-tab>
   <ion-tab [root]="tab3Root" tabIcon="pin"></ion-tab>
   <ion-tab [root]="tab4Root" tabIcon="person"></ion-tab>

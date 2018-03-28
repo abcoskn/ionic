@@ -16,7 +16,7 @@
           </ion-item>
           <div class="submenu" [ngClass]="categories == true ? 'showmenu': 'hidemenu'">
             <div *ngFor="let item of items">
-                <button ion-item *ngIf="item.childs.length==0" (click)="submenu(items,item)">
+                <button menuClose ion-item *ngIf="item.childs.length==0" (click)="submenu(items,item)">
                   {{item.name}}
                 </button>
                 <ion-item *ngIf="item.childs.length>0" (click)="submenu(items,item)">
@@ -29,7 +29,7 @@
                 </ion-item>
               <div class="submenu" [ngClass]="item.show == true ? 'showmenu': 'hidemenu'">
                 <div *ngFor="let subitem of item.childs">
-                  <button ion-item *ngIf="subitem.childs.length==0" (click)="submenu(item.childs,subitem)">
+                  <button menuClose ion-item *ngIf="subitem.childs.length==0" (click)="submenu(item.childs,subitem)">
                     {{subitem.name}}
                   </button>
                   <ion-item *ngIf="subitem.childs.length>0" (click)="submenu(item.childs,subitem)">
@@ -39,7 +39,7 @@
                   </ion-item>
                   <div class="submenu" [ngClass]="subitem.show == true ? 'showmenu': 'hidemenu'">
                     <div *ngFor="let subsubitem of subitem.childs">
-                      <button ion-item (click)="submenu(subitem.childs,subsubitem)">
+                      <button menuClose ion-item (click)="submenu(subitem.childs,subsubitem)">
                         {{subsubitem.name}}
                       </button>
                     </div>

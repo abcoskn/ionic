@@ -19,6 +19,7 @@ import { GreenProductsPage } from '../pages/green-products/green-products';
 import { ScanBarcodePage } from '../pages/scan-barcode/scan-barcode';
 import { ProductPage } from '../pages/product/product';
 import { SublistPage } from '../pages/sublist/sublist';
+import { CategoryPage } from '../pages/category/category';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +44,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     GreenProductsPage,
     ScanBarcodePage,
     ProductPage,
-    SublistPage
+    SublistPage,
+    CategoryPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     GreenProductsPage,
     ScanBarcodePage,
     ProductPage,
-    SublistPage
+    SublistPage,
+    CategoryPage
   ],
   providers: [
     StatusBar,

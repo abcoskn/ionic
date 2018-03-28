@@ -1,0 +1,54 @@
+<!--
+  Generated template for the CategoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="rocher">
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{title}}</ion-title>
+      </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div class="holder">
+        <h1>{{title}}</h1>
+      </div>
+<ion-card *ngFor="let item of items">
+ <!-- <div class="cover"><div class="outofstock"><div>Stokta Yok</div></div></div>-->
+        
+  <ion-item>
+    <button style="float:left;" clear icon-only  ion-button><ion-icon name="bookmark"></ion-icon></button>
+    <button style="float:right;" clear icon-only  ion-button><ion-icon name="heart-outline"></ion-icon></button>
+  </ion-item>
+  <img src="https://www.yvesrocher.com.tr/images/catalog/products/window1/{{item.code}}.jpg" />
+  <ion-card-content>
+    <ion-card-title>
+      {{item.name}}
+    </ion-card-title>
+  </ion-card-content>
+
+  <ion-row>
+      <ion-col center text-center>
+        <div class="dprice">{{item.dprice}} TL</div>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+            {{item.price}} TL
+        </ion-note>
+      </ion-col>
+      <ion-col center text-center>
+        <div class="percent">{{item.price%item.dprice}}</div>
+      </ion-col>
+    </ion-row>
+</ion-card>
+
+
+</ion-content>
