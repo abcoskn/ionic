@@ -33,4 +33,22 @@ items:any;
       }
     });
   }
+  percent(val1,val2)
+  {
+    val2=val2.replace(",",".");
+    var result=Math.round(100-((Number(val2)*100)/Number(val1)));
+    return "% "+result;
+  }
+  comparison(val1,val2){
+    val2=val2.replace(",",".");
+    if(val2.substr(val2.length-1,1)=="0")
+      val2=val2.substr(0,val2.length-1);
+    if(val2.substr(val2.length-1,1)=="0")
+      val2=val2.substr(0,val2.length-1);
+    if(val1==val2)
+      return false;
+    else
+      return true;
+
+  }
 }

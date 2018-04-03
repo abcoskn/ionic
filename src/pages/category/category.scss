@@ -1,7 +1,4 @@
 page-category {
-    .scroll-content{
-        margin-bottom:0px!important;
-    }
     .holder{
         width:100%;
         background-color:#ecf0f1;
@@ -34,6 +31,7 @@ page-category {
     }
     .card-title{
         font-size:1.34rem!important;
+        height:52px;
     }
     .dprice{
         color:#b4023f;
@@ -48,6 +46,16 @@ page-category {
     }
     ion-note{
         text-decoration: line-through;
+        padding-left:4px;
+    }
+    .col1{
+        width:70%!important;
+    }
+    .col2{
+        width:30%!important;
+    }
+    .listprice{
+        margin-top:-14px;
     }
     .cover{
         position:absolute; top:0;bottom:0;left:0;right:0;

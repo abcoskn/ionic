@@ -31,24 +31,26 @@
   <img src="https://www.yvesrocher.com.tr/images/catalog/products/window1/{{item.code}}.jpg" />
   <ion-card-content>
     <ion-card-title>
-      {{item.name}}
+      {{(item.name | slice:0:50) + (item.name.length > 50 ? '...' : '')}}
     </ion-card-title>
   </ion-card-content>
-
-  <ion-row>
-      <ion-col center text-center>
+    <ion-row>
+      <ion-col width-67 center text-center>
         <div class="dprice">{{item.dprice}} TL</div>
       </ion-col>
-      <ion-col center text-center>
-        <ion-note>
+      <ion-col width-33 *ngIf="comparison(item.price,item.dprice)" center text-center>
+        <div class="percent">{{percent(item.price,item.dprice)}}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="listprice">
+      <ion-col center text-left>
+        <ion-note *ngIf="comparison(item.price,item.dprice)">
             {{item.price}} TL
         </ion-note>
       </ion-col>
-      <ion-col center text-center>
-        <div class="percent">{{item.price%item.dprice}}</div>
-      </ion-col>
     </ion-row>
 </ion-card>
+<div style="height:50px;width:100%;"></div>
 
 
 </ion-content>
